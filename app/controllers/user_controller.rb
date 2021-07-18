@@ -9,12 +9,12 @@ class UserController < ApplicationController
     
     
   def index
-    @books = Book.all
-    @book = Book.new
+    @users = User.all
+    @user = User.new
   end
 
   def show
-     @book = Book.find(params[:id])
+     @user = User.find(params[:id])
   end
 
   # def new
@@ -22,47 +22,46 @@ class UserController < ApplicationController
   # end
   
   def create
-    @book = Book.new(book_params)
-    if @book.save
-      flash[:notice] = "Book was successfully created."
-      redirect_to book_path(@book.id)
+    @user = User.new(user_params)
+    if @user.save
+      flash[:notice] = "Welcome! You have signed up successfully."
+      # ユーザー詳細ページに飛ばす
+      redirect_to user_path(@user.id)
     else
-      @books = Book.all
+      @users = User.all
+      # サインアップの入力ページ
       render 'index'
     end
   end
 
   def edit
-     @book = Book.find(params[:id])
+     @user = User.find(params[:id])
   end
   
   def update
-    @book = Book.find(params[:id])
-    if @book.update(book_params)
-      flash[:notice] = "Book was successfully created."
-      redirect_to book_path(@book.id)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "You have updated user successfully."
+      # ユーザー詳細ページに飛ばす
+      redirect_to user_path(@user.id)
     else
-      @books = Book.all
+      @users = User.all
+      # ユーザー編集ページに飛ばす
       render 'edit'
     end
   end
   
   def destroy
-    book = Book.find(params[:id])
-    book.destroy
+    user = User.find(params[:id])
+    user.destroy
     flash[:notice] = "Book was successfully destroyed."
-    redirect_to books_path
+    redirect_to users_path
   end
   
   
   private
-  def book_params
-    params.require(:book).permit(:title, :body)
+  def user_params
+    params.require(:user).permit(:name, :profile_image_id,:introduction)
   end
   
-  
-  
-  
-end
-
 end
