@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :books
-  resources :user, only: [:new, :create, :index, :edit, :update]
+  resources :user, only: [:new, :create, :show, :index, :edit, :update]
   # do  ユーザ画像は設定のみ
   #   resources :user_image, only: [:new, :create, :index, :edit, :update]
   # end

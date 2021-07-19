@@ -1,0 +1,68 @@
+ 
+ <%= render 'books/list', book: @book,user: @user %>
+ 
+ 
+ 
+ <!--headerここから-->
+ 
+ 
+ 
+  <!--エラー時のメッセージ-->
+  <% if @book.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+ 
+ <!--headerここまで-->
+ 
+ <!--ユーザーインフォを入れる　ここから-->
+ <p>
+   <h2>User info</h2>
+   <p>
+       <%= attachment_image_tag user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg"%>
+       <label for="inputImage">Image</label>
+       <%= f.attachment_field :profile_image_id, placeholder: "プロフィール画像" %>
+   </p>
+   <p>
+       Name　　<p><%= user.name %></p>
+   </p>
+   <p>
+       Introduction
+       <p><%= user.introduction %></p>
+   </p>
+ </p>
+  <!--ユーザーインフォを入れる　ここまで-->
+  
+  <!--New bookを入れる　ここから-->
+  
+  <h1>New book</h1>
+<!-- form_with部分 -->
+<%= form_with model:book, local:true do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+  <%= f.submit 'Create Book' %>
+<% end %>
+
+
+<!--New bookを入れる　ここまで-->
+
+
+
+
+
+<!--footerここから-->
+
+
+
+
+<!--footerここまで-->

@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-    # 使うコントローラー
+    # 使う
     # new
     # create
     # index
