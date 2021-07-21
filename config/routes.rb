@@ -1,20 +1,8 @@
 Rails.application.routes.draw do
-  # get 'books/index'
-
-  # get 'books/show'
-
-  # get 'books/new'
-
-  # get 'books/edit'
-
   devise_for :users
   resources :books
-  resources :user, only: [:new, :create, :show, :index, :edit, :update]
-  # do  ユーザ画像は設定のみ
-  #   resources :user_image, only: [:new, :create, :index, :edit, :update]
-  # end
-   
-  # <!-- root to:'books#index' -->
+  resources :users, only: [:show, :index, :edit, :update]
+ 
   root to: 'homes#top'
   resources :homes
   

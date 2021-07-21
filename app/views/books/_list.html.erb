@@ -1,18 +1,37 @@
+<!--headerここから-->
+ <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
+        <ul class="navbar-nav ml-auto">
+          <li><a class="fas fa-home nav-link text-light" href="/users/id"> Home</a></li>
+          <li><a class="fas fa-users nav-link text-light" href="/users"> Users</a></li>
+          <li><a class="fas fa-book-open nav-link text-light" href="/books"> Books</a></li>
+          <li><a class="fas fa-sign-out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
  
- <%= render 'books/list', book: @book,user: @user %>
- 
- 
- 
- <!--headerここから-->
- 
- 
+ <!--成功時のメッセージ-->
+  <% if flash[:notice] %>
+  <p id="notice">
+    <%= flash[:notice] %>
+  </p>
+  <% end %>
+
  
   <!--エラー時のメッセージ-->
-  <% if @book.errors.any? %>
+  <% if book.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+        <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
         <ul>
-          <% @book.errors.full_messages.each do |message| %>
+          <% book.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
@@ -61,8 +80,14 @@
 
 
 <!--footerここから-->
-
-
-
+<footer>
+  <div class="container mt-5">
+  	<div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
 
 <!--footerここまで-->

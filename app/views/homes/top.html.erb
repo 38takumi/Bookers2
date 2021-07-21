@@ -1,4 +1,4 @@
-<h1>トップページ</h1>
+<!--<h1>トップページ</h1>-->
 
 
 <!--ここから見本-->
@@ -35,6 +35,13 @@
 </header>
       <main>
         <p id="notice"></p>
+        <!--成功時のメッセージ　ここから-->
+      　<% if flash[:notice] %>
+      　<p id="notice">
+        　<%= flash[:notice] %>
+      　</p>
+     　 <% end %>
+     　 <!--成功時のメッセージ　ここまで-->
         <div class="container">
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
@@ -71,4 +78,3 @@
 
 
 <!--ここまで見本-->
-

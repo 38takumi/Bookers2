@@ -1,0 +1,58 @@
+<!-- headerとUser infoとNew bookとfooter -->
+<%= render 'books/list', book: @book,user: @user %>
+<!-- headerとUser infoとNew bookとfooter -->
+
+
+<main>
+  <body>
+ 
+   <!--編集成功のメッセージ-->
+   <!--<%# if flash[:notice] %>-->
+   <!--  <p id="notice">-->
+   <!--  <%#= flash[:notice] %>-->
+   <!--  </p>-->
+   <!--<%# end %>-->
+   
+   <div class="col-md-8 offset-md-1">
+    <h2>Books</h2>
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+   
+   <!--Usersの部分　ここから-->
+   
+  <h2>Users</h2>
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th></th>
+          <th>image</th>
+          <th>name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @book.each do |book| %>
+          <thead>
+            <tr>
+              <th><%#= attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg"%></th>
+              <th><%#= @user.name %></th>
+              <th><%= link_to "Show",user_path(@user.id) %></th>
+            </tr>
+          </thead>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+ </main>
