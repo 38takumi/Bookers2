@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+       :recoverable, :rememberable, :validatable
   has_many :books, dependent: :destroy
 
 
@@ -12,7 +14,7 @@ class User < ApplicationRecord
 
 
 #プロフィール画像用 deviseに入ってるかも
-  attachment :profile_image_id
+  attachment :profile_image
 
 
 end

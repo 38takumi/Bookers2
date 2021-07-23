@@ -7,8 +7,7 @@ class BooksController < ApplicationController
 
   def show
      @book = Book.find(params[:id])
-    # @user = User.find(params[:id])　もしかしたら必要かも
-    # @book = @user.book.page(params[:page]).reverse_order
+     @user = @book.user
   end
 
   # def new
@@ -18,19 +17,18 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
+    # binding.pry
     if @book.save
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
     else
       @books = Book.all
-      render 'index'
+      render 'books/index'
     end
   end
 
   def edit
      @book = Book.find(params[:id])
-      # @user = User.find(params[:id])　もしかしたら必要かも
-    # @user = @user.page(params[:page]).reverse_order
   end
   
   def update
@@ -53,9 +51,10 @@ class BooksController < ApplicationController
   end
   
   
+  
   private
   def book_params
-    params.require(:book).permit(:title, :body,:user_id)
+    params.require(:book).permit(:title, :body)
   end
   
   def ensure_correct_user
@@ -64,7 +63,5 @@ class BooksController < ApplicationController
       redirect_to user_path
     end
   end
-  
-  
   
 end

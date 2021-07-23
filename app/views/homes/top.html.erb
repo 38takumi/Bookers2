@@ -1,39 +1,4 @@
-<!--<h1>トップページ</h1>-->
-
-
-<!--ここから見本-->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bookers2Ver2</title>
-    <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="f1eGlIUOQQkh6aUey6fCSFckDp8pO/wfh+Ks6w2S7SRtEfOIliLdsv1ag106FpWQdsAYSUgrifw/BfGlE1sJaA==" />
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" media="all" href="/assets/application-16605eadccf37c23d1fa922dd614f45b9f2cf25723e2e4032f1975b02ea7d11f.css" data-turbolinks-track="reload" />
-    <script src="/assets/application-3ac47b8571e58aab844e8d0a988f0f55d8a16c1a75953470343f79cf1bec8528.js" data-turbolinks-track="reload"></script>
-  </head>
-  <body>
-    <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span>Bookers</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <li><a class="fas fa-home nav-link text-light" href="/"> Home</a></li>
-          <li><a class="fas fa-link nav-link text-light" href="/home/about"> About</a></li>
-          <li><a class="fas fa-user-plus nav-link text-light" href="/users/sign_up"> sign up</a></li>
-          <li><a class="fas fa-sign-in-alt nav-link text-light" href="/users/sign_in"> login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
-      <main>
+<main>
         <p id="notice"></p>
         <!--成功時のメッセージ　ここから-->
       　<% if flash[:notice] %>
@@ -61,20 +26,4 @@
   </div>
 </div>
 
-
-      </main>
-    <footer>
-  <div class='container mt-5'>
-  	<div class='row'>
-    	<div class='mx-auto'>
-    		<p>CopyRight Infratop.inc</p>
-    	</div>
-    </div>
-  </div>
-</footer>
-
-  </body>
-</html>
-
-
-<!--ここまで見本-->
+</main>

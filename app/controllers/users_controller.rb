@@ -1,22 +1,15 @@
 class UsersController < ApplicationController
-    # 使う
-    # index
-    # show
-    # edit
-    # update
-    
-    
-    
   def index
     @users = User.all
     @user = User.new
+    @books = Book.all
+    @book = Book.new
   end
 
   def show
      @user = User.find(params[:id])
      @book = Book.new
      @books = @user.books
-    # @user = @user.book(params[:id]).reverse_order
   end
 
   # def new
@@ -38,13 +31,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    # @user = @user.page(params[:page]).reverse_order
   end
   
   def update
     @user = User.find(params[:id])
     @user = current_user
-    # @user.user_id = current_user.id　ここの1文いらなそう
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
       # ユーザー詳細ページに飛ばす
@@ -62,6 +53,7 @@ class UsersController < ApplicationController
     flash[:notice] = "Book was successfully destroyed."
     redirect_to users_path
   end
+  
   
   
   private

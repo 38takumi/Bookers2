@@ -1,92 +1,55 @@
 <main>
+ 
+<div class="container px-5 px-sm-0">
+   <div class="row">
+ 
  <body>
+ <div class="col-md-3"> 
   
-  <!--ユーザーインフォとnew bookここから-->
-  <%= render 'books/list', book: @book,user: @user %>
-  <!--ユーザーインフォとnew bookここまで-->
+    <!--成功時・エラー時メッセージ-->
+     <%= render 'books/message', book: @book %>
+    
+    <!--ユーザーインフォ-->
+    <%= render 'books/info', user: @user %>
+    
+    <!--New book-->
+    <%= render 'books/new', book: @book %>
+
+ </div>
  
  
- <!--ユーザーインフォを入れる　ここから-->
-<!-- <p>-->
-<!--   <h2>User info</h2>-->
-<!--   <p>-->
-<!--       <%#= attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg"%>-->
-<!--        <label for="inputImage">Image</label>-->
-<!--       <%#= f.attachment_field :profile_image_id, placeholder: "プロフィール画像" %>-->
-<!--   </p>-->
-<!--   <p>-->
-<!--       Name-->
-<!--       <p><%#= @user.name %></p>-->
-<!--   </p>-->
-<!--   <p>-->
-<!--       Introduction-->
-<!--       <p><%#= @user.introduction %></p>-->
-<!--   </p>-->
-<!-- </p> -->
-  
-  <!--ユーザーインフォを入れる　ここまで-->
-  
-  <!--New bookを入れる　ここから-->
-  
-<!--  <h1>New book</h1>-->
-<!-- form_with部分 -->
-<!--<%#= form_with model:@book, local:true do |f| %>-->
-
-<!--  <h4>Title</h4>-->
-<!--  <%#= f.text_field :title %>-->
-
-<!--  <h4>Body</h4>-->
-<!--  <%#= f.text_area :body %>-->
-<!--  <%#= f.submit 'Create Book' %>-->
-<!--<%# end %>-->
-
-
-<!--New bookを入れる　ここまで-->
- 
- 
+ <div class="col-md-8 offset-md-1"> 
   <!--Book detailの部分　ここから--> 
  <h2>Book detail</h2>
  <table class="table table-hover table-inverse">
- 
-  <tbody>
-   <% @book.each do |book| %>
-   <thead>
+ <thead></thead>
+<tbody>
+  <!--<tbody>-->
+  <!-- <thead>-->
     <tr>
-      <th>
-       <%= attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg"%><br>
-       <%= link_to @book.title,user_path(@user.id) %>
+      <th scope="col">
+       <p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></p>
+       <p><%= link_to @user.name,user_path(@user.id) %></p>
       </th>
-      <td><%= link_to book.title,book_path(@book.id) %></td>
-      <th><%= @book.body %></th>
+      <th scope="col"><%= link_to @book.title,book_path(@book.id) %></th>
+      <th scope="col"><%= @book.body %></th>
       
        <% if @user.id == current_user.id %>
-       <th><%= link_to "Edit",edit_book_path(@user.id) %></th>
-       <th><%= link_to "Destroy", book_path(@user.id), method: :delete %></th>
+       <th scope="col"><%= link_to "Edit",edit_book_path(@book.id), class:"btn btn-sm btn-success" %></th>
+       <th scope="col"><%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn btn-sm btn-danger" %></th>
       <% end %>
     </tr>
-  </thead>
-  <% end %>
+  <!--</thead>-->
+  <!--</tbody>-->
   </tbody>
 </table> 
  <!--Book detailの部分　ここまで-->
+ </div>
  
- 
-  
-  
- <!--<p>-->
- <!--  <strong>Title:</strong>-->
- <!--  <p><%#= @book.title %></p>-->
- <!--</p>-->
-
- <!--<p>-->
- <!--  <strong>Body:</strong>-->
- <!--  <p><%#= @book.body %></p>-->
- <!--</p>-->
-
-
-   
- <!--  <%#= link_to "Edit",edit_book_path(@book.id) %>-->
- <!--  |-->
- <!--  <%#= link_to "Back",books_path %>-->
  </body>
+ 
+ </div>
+</div>
+
+ 
 </main>
