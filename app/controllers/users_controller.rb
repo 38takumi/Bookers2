@@ -47,12 +47,12 @@ class UsersController < ApplicationController
     end
   end
   
-  def destroy
-    user = User.find(params[:id])
-    user.destroy
-    flash[:notice] = "Book was successfully destroyed."
-    redirect_to users_path
-  end
+  # def destroy
+  #   user = User.find(params[:id])
+  #   user.destroy
+  #   flash[:notice] = "Book was successfully destroyed."
+  #   redirect_to users_path
+  # end
   
   
   

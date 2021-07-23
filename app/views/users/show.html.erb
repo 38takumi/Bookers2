@@ -1,4 +1,4 @@
-<main>
+<!--ユーザーページ-->
  <div class="container px-5 px-sm-0">
  <div class="row">
  
@@ -31,17 +31,25 @@
     </tr>
   </thead>
   
+  <% @books.each do |book| %>
   <tbody>
-   <% @books.each do |book| %>
    <thead>
     <tr>
-      <th scope="col"><%= link_to book.title,book_path(book.id) %></th>
-      <th ><%= book.body %></th>
-      <th colspan="3"></th>
+     <th scope="col">
+      <!--ユーザーページに飛ばす-->
+       <p><%= link_to user_path(@user.id) do %>
+           <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
+         <% end %>
+       </p>
+       </th>
+       <!--本の詳細画面に飛ばす-->
+      <td><%= link_to book.title,book_path(book.id) %></td>
+      <td><%= book.body %></td>
+      
     </tr>
   </thead>
-  <% end %>
   </tbody>
+  <% end %>
 </table> 
 </div>
   
@@ -50,6 +58,3 @@
  </body>
  </div>
  </div>
- 
- 
-</main>
