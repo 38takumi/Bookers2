@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     else
       @users = User.all
       # ユーザー編集ページに飛ばす
-      render 'edit'
+      render :edit
     end
   end
   
@@ -61,11 +61,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :profile_image_id,:introduction)
   end
   
-  def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user.id)
-    end
-  end
+  # def ensure_correct_user
+  #   @user = User.find(params[:id])
+  #   unless @user == current_user
+  #     redirect_to user_path(current_user.id)
+  #   end
+  # end
   
 end

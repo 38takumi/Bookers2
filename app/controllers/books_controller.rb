@@ -10,20 +10,24 @@ class BooksController < ApplicationController
      @user = @book.user
   end
 
-  # def new
-  #   @book = Book.new
-  # end
+  def new
+    @book = Book.new
+    redirect_to book_path(@book.id)
+  end
   
   def create
+     # １. データを新規登録するためのインスタンス作成
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     # binding.pry
+     # ２. データをデータベースに保存するためのsaveメソッド実行
     if @book.save
       flash[:notice] = "Book was successfully created."
+       # ３. ブック詳細画面へリダイレクト
       redirect_to book_path(@book.id)
     else
       @books = Book.all
-      render 'books/index'
+      render :index
     end
   end
 
@@ -39,7 +43,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
     else
       @books = Book.all
-      render 'edit'
+      render :edit
     end
   end
   
