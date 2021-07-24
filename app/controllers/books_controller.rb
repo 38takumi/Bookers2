@@ -1,19 +1,25 @@
 class BooksController < ApplicationController
+  before_action :correct_book,only: [:edit,:update]
+  
+  
   def index
     @books = Book.all
     @user = current_user
+    # @user_data = current_user
     @book = Book.new
   end
 
   def show
      @book = Book.find(params[:id])
+    # @bookのユーザー
      @user = @book.user
+     @book_new = Book.new
   end
 
-  def new
-    @book = Book.new
-    redirect_to book_path(@book.id)
-  end
+  # def new
+  #   @book = Book.new
+  #   redirect_to book_path(@book.id)
+  # end
   
   def create
      # １. データを新規登録するためのインスタンス作成
@@ -27,6 +33,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
     else
       @books = Book.all
+      @user = current_user
       render :index
     end
   end
@@ -56,16 +63,18 @@ class BooksController < ApplicationController
   
   
   
+   def correct_book
+        @book = Book.find(params[:id])
+    unless @book.user.id == current_user.id
+      redirect_to books_path
+    end
+    end
+  
+  
   private
   def book_params
     params.require(:book).permit(:title, :body)
   end
   
-  def ensure_correct_user
-    @book = Book.find(params[:id])
-    unless @book.user == current_user
-      redirect_to user_path
-    end
-  end
   
 end

@@ -19,11 +19,12 @@
  </p>
  <div class="actions">
      <!--<input type="submit" name="commit" value="Update Book" data-disable-with="Update Book">-->
-     <%= link_to "Update Book",book_path(@book.id), class:"btn btn-success mb-1" %>
+     <%#= link_to "Update Book",book_path(@book.id), class:"btn btn-success mb-1" %>
+      <%= f.submit "Update Book", class:"btn btn-success mb-1" %>
  </div>
  <% end %>
  
  <%= link_to "Show",book_path(@book.id) %>
   </a> 
   |
- <%= link_to "Back",books_path(@book.id) %>
+ <%= link_to "Back",books_path %>

@@ -26,10 +26,9 @@
  </p>
  
  
- <p>
-   Introduction</br>
-   <p><%#= @user.introduction %></p>
-   <textarea class="mb-1"><%#= f.text_field :introduction %><%= @user.introduction%></textarea>
+ <p>Introduction</br>
+   <%#= @user.introduction %>
+   <%= f.text_field :introduction, class:"mb-1" %><%#= @user.introduction%>
    <%#= f.attachment_field :introduction, text:@user.introduction %>
  </p>
 
