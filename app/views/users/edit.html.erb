@@ -17,20 +17,21 @@
 
    <label for="inputName">Name</label></br>
    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", class:"mb-1"%>
- </p>
+
  
  <p>
-   <%#= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-   <label for="inputImage">Image</label>
-   <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class:"form-control-file mb-1"%>
+    <%#= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+    <label for="inputImage">Image</label>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class:"form-control-file mb-1"%>
  </p>
- 
- 
+  
+  
  <p>Introduction</br>
-   <%#= @user.introduction %>
-   <%= f.text_field :introduction, class:"mb-1" %><%#= @user.introduction%>
-   <%#= f.attachment_field :introduction, text:@user.introduction %>
+    <%#= @user.introduction %>
+    <%= f.text_field :introduction, class:"mb-1" %><%#= @user.introduction%>
+    <%#= f.attachment_field :introduction, text:@user.introduction %>
  </p>
 
  <%= f.submit "Update User", class:"btn btn-secondary" %>
  <% end %>
+ </p>
