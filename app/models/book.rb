@@ -7,5 +7,4 @@ class Book < ApplicationRecord
  validates :body, length: { maximum: 200 }
 # validates :body, length: {  in: 1..200 }
 
-
 end

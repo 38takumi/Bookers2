@@ -1,11 +1,8 @@
 <!--ブック編集ページ-->
 <h1>Editing Book</h1>
-     
-    
   <!--成功時・エラー時メッセージ-->
   <%= render 'books/message', book: @book %>
- 
- 
+  
  <!--form_withを利用すると、インスタンス変数を渡すだけで、インスタンス変数内のモデルを解読して、投稿したタイトルと内容を代入してくれる-->
  <%= form_with model: @book, url: book_path, local: true do |f| %>
  <p>
